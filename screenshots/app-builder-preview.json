@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Besumes",
+      "hasCanvas": false,
+      "bodyTextLen": 1127,
+      "bodyTextHash": "d3cf7629ebc2e3218c1ba9bb48fcca2dbe635e12f2805e9a11105c7e41a4d1f8",
+      "bodyTextPrefix": "B Besumes Templates Open app RESUME MAKER Build Your Resume. Bui",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Besumes",
+      "hasCanvas": false,
+      "bodyTextLen": 1117,
+      "bodyTextHash": "23e29d7ae3a466e456f031052c9291358c46002063107428c809a3add785b766",
+      "bodyTextPrefix": "B Besumes Open app RESUME MAKER Build Your Resume. Build Your Fu",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}

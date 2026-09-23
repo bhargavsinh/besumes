@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime-CbXtAM7H.js";import{Z as t}from"./button-DUwh7eE5.js";import{t as n}from"./store-U-4M8tbm.js";import{t as r}from"./store-Cf2UnZWV.js";var i=e(t(),1);function a(){let e=r(e=>e.hydrate),t=n(e=>e.hydrate),a=r(e=>e.hydrated),o=n(e=>e.hydrated);return(0,i.useEffect)(()=>{t(),e()},[e,t]),a&&o}export{a as t};

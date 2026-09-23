@@ -1,0 +1,479 @@
+@import "tailwindcss";
+@import "@fontsource-variable/source-sans-3";
+@import "@fontsource-variable/newsreader";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Source Sans 3 Variable", "Source Sans 3", "Segoe UI", system-ui,
+    sans-serif;
+  --font-serif: "Newsreader Variable", "Newsreader", Georgia, "Times New Roman",
+    serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-paper: var(--paper);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+
+  --shadow-border:
+    0px 0px 0px 1px color-mix(in oklab, var(--foreground) 8%, transparent),
+    0px 1px 2px -1px color-mix(in oklab, var(--foreground) 6%, transparent),
+    0px 2px 8px 0px color-mix(in oklab, var(--foreground) 4%, transparent);
+}
+
+:root {
+  --background: #f4f1ea;
+  --foreground: #1c1917;
+  --card: #fffcf7;
+  --card-foreground: #1c1917;
+  --popover: #fffcf7;
+  --popover-foreground: #1c1917;
+  --primary: #1e3a5f;
+  --primary-foreground: #f4f1ea;
+  --secondary: #ebe6dc;
+  --secondary-foreground: #1c1917;
+  --muted: #ece8df;
+  --muted-foreground: #6f6a64;
+  --accent: #e4edf6;
+  --accent-foreground: #1e3a5f;
+  --destructive: #b42318;
+  --destructive-foreground: #fffaf7;
+  --border: color-mix(in oklab, #1c1917 12%, transparent);
+  --input: color-mix(in oklab, #1c1917 14%, transparent);
+  --ring: #1e3a5f;
+  --paper: #ffffff;
+}
+
+.dark {
+  --background: #121110;
+  --foreground: #f3efe8;
+  --card: #1b1a18;
+  --card-foreground: #f3efe8;
+  --popover: #1b1a18;
+  --popover-foreground: #f3efe8;
+  --primary: #c5d4e8;
+  --primary-foreground: #121110;
+  --secondary: #262422;
+  --secondary-foreground: #f3efe8;
+  --muted: #23211f;
+  --muted-foreground: #a8a29a;
+  --accent: #243044;
+  --accent-foreground: #d7e3f2;
+  --destructive: #f0a8a0;
+  --destructive-foreground: #1c1917;
+  --border: color-mix(in oklab, #f3efe8 12%, transparent);
+  --input: color-mix(in oklab, #f3efe8 16%, transparent);
+  --ring: #c5d4e8;
+  --paper: #ffffff;
+  --shadow-border: 0 0 0 1px color-mix(in oklab, #f3efe8 10%, transparent);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---- Resume paper (always light, print-faithful) ---- */
+
+.resume-sheet {
+  background: var(--paper);
+  color: #1c1917;
+  width: 210mm;
+  min-height: 297mm;
+  padding: 16mm 16mm 18mm;
+  box-sizing: border-box;
+  font-family: var(--font-sans);
+  font-size: 10.5pt;
+  line-height: 1.45;
+  overflow: hidden;
+}
+
+.resume-sheet.resume-letter {
+  width: 216mm;
+  min-height: 279mm;
+}
+
+.resume-name {
+  font-size: 26pt;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  margin: 0;
+  color: #1c1917;
+}
+
+.resume-title {
+  margin: 4px 0 0;
+  font-size: 12pt;
+  color: #57534e;
+}
+
+.resume-contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 12px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 9pt;
+  color: #44403c;
+}
+
+.resume-contacts a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.resume-section {
+  margin-top: 14px;
+}
+
+.resume-h2 {
+  font-size: 11pt;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  margin: 0 0 8px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #d6d3d1;
+  color: #1c1917;
+}
+
+.resume-entry + .resume-entry {
+  margin-top: 10px;
+}
+
+.resume-entry-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.resume-entry-role {
+  font-weight: 650;
+  font-size: 10.5pt;
+}
+
+.resume-entry-dates {
+  color: #57534e;
+  font-size: 9.5pt;
+  white-space: nowrap;
+}
+
+.resume-entry-sub {
+  color: #57534e;
+  font-size: 10pt;
+  font-style: italic;
+}
+
+.resume-bullets {
+  margin: 4px 0 0;
+  padding-left: 16px;
+}
+
+.resume-bullets li {
+  margin: 2px 0;
+}
+
+.resume-muted {
+  color: #57534e;
+}
+
+.resume-photo {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 4px;
+  outline: 1px solid color-mix(in oklab, #1c1917 12%, transparent);
+  outline-offset: -1px;
+}
+
+.resume-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.resume-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+}
+
+/* Classic */
+.resume-classic .resume-header {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.resume-classic .resume-name {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 28pt;
+}
+.resume-classic .resume-title {
+  font-style: italic;
+}
+.resume-classic .resume-contacts {
+  justify-content: center;
+}
+.resume-classic .resume-h2 {
+  text-align: center;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 10pt;
+  border-bottom-color: #a8a29e;
+}
+
+/* Modern */
+.resume-modern .resume-name {
+  font-size: 24pt;
+  color: #1e3a5f;
+}
+.resume-modern .resume-h2 {
+  color: #1e3a5f;
+  border-bottom-color: #c5d0de;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 9.5pt;
+}
+
+/* Minimal */
+.resume-minimal .resume-name {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 26pt;
+}
+.resume-minimal .resume-h2 {
+  font-family: var(--font-serif);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 9pt;
+  font-weight: 500;
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+.resume-minimal .resume-section {
+  margin-top: 16px;
+}
+.resume-minimal .resume-photo {
+  display: none;
+}
+
+/* Professional */
+.resume-professional {
+  padding: 0 0 16mm;
+}
+.resume-professional .resume-masthead {
+  background: #1e3a5f;
+  color: #f4f1ea;
+  padding: 14mm 16mm 12mm;
+  margin: 0 0 8mm;
+}
+.resume-professional .resume-name,
+.resume-professional .resume-title,
+.resume-professional .resume-contacts {
+  color: #f4f1ea;
+}
+.resume-professional .resume-title {
+  color: #d7e0ea;
+}
+.resume-professional .resume-h2 {
+  color: #1e3a5f;
+  border-bottom: 0;
+  padding-bottom: 0;
+  position: relative;
+  padding-left: 10px;
+}
+.resume-professional .resume-h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  bottom: 2px;
+  width: 3px;
+  background: #1e3a5f;
+}
+.resume-professional .resume-body {
+  padding: 0 16mm;
+}
+
+/* Student */
+.resume-student .resume-name {
+  font-size: 28pt;
+  letter-spacing: -0.04em;
+}
+.resume-student .resume-h2 {
+  color: #1e3a5f;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 9.5pt;
+}
+.resume-student .resume-chip {
+  display: inline-block;
+  border: 1px solid #d6d3d1;
+  border-radius: 999px;
+  padding: 2px 9px;
+  font-size: 9pt;
+}
+
+/* ATS overrides */
+.resume-ats .resume-photo,
+.resume-ats .resume-chip {
+  display: none !important;
+}
+.resume-ats .resume-masthead {
+  background: transparent !important;
+  color: #1c1917 !important;
+  padding: 0 0 8mm !important;
+  margin: 0 !important;
+}
+.resume-ats.resume-professional {
+  padding: 16mm;
+}
+.resume-ats.resume-professional .resume-body {
+  padding: 0;
+}
+.resume-ats .resume-name,
+.resume-ats .resume-title,
+.resume-ats .resume-contacts,
+.resume-ats .resume-h2 {
+  color: #1c1917 !important;
+}
+.resume-ats .resume-h2 {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: 1px solid #a8a29e;
+  padding-left: 0;
+}
+.resume-ats .resume-h2::before {
+  display: none;
+}
+.resume-ats .resume-skills {
+  display: block;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  html,
+  body {
+    background: white !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  [data-sonner-toaster] {
+    display: none !important;
+  }
+
+  main {
+    padding: 0 !important;
+    max-width: none !important;
+  }
+
+  .print-root {
+    position: static !important;
+    inset: auto !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    background: white !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  .resume-scale {
+    transform: none !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
+  .resume-sheet {
+    box-shadow: none !important;
+    margin: 0 !important;
+    width: 210mm !important;
+    min-height: auto !important;
+  }
+}
+
+.shadow-card {
+  box-shadow: var(--shadow-border);
+}
+
+.safe-bottom {
+  padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+}
